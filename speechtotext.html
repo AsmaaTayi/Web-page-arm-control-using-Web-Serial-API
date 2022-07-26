@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Speech To Text</title>
+</head >
+
+    <body style=  text-align:center;" >
+    
+    <br>
+    <label 
+    style="
+    display:block;
+    overflow:auto;
+    font-family:sans-serif;
+    text-shadow:0 0 2px #ddd;
+    padding:20px 10px 10px 0;
+    color: #334858;
+    font-size:40px;"
+     for="Speech Recognition">Speech To Text </label> 
+     <br><br><br>
+    <input style="
+    text-align:center;
+    border:2px solid #dadada;
+    border-radius:7px;
+    font-size:20px;
+    width: 300px; 
+    height: 100px;    
+    "
+    type="text" name="" id="speechToText" placeholder="Start" onclick="record()">
+
+
+    
+   
+
+    <script>
+        function record() {
+            var recognition = new webkitSpeechRecognition();
+            recognition.lang = "ar-SA";
+
+            recognition.onresult = function(event) {
+                document.getElementById('speechToText').value = event.results[0][0].transcript;
+            }
+            recognition.start();
+
+        }
+    </script>
+    <script src="ar.js"></script>
+</body>
+</html>
